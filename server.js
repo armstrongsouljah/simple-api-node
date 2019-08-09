@@ -1,15 +1,18 @@
 const express =  require('express')
 const bodyParser = require('body-parser');
-const db = require('./database/index')
+const mongoConnect = require('./database/index').mongoConnect
+const router = require('./routes/index')
 
 const app = express()
-require('dotenv').config()
+const port = 8080
 
 app.use(bodyParser.json({ extended: true}))
-const port = 8080
-const {NAME} = process.env
+app.use(router, (req, res, next) => {
+    next()
+})
 
-db.mongoConnect(() => {
+
+mongoConnect(() => {
     app.listen(port, () => {
         console.log(`Server running at http://localhost:${port}`)
     })
