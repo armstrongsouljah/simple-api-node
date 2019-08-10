@@ -4,9 +4,9 @@ const mongoConnect = require('./database/index').mongoConnect
 const router = require('./routes/index')
 
 const app = express()
-const port = 8080
 
 app.use(bodyParser.json({ extended: true}))
+const port = process.env.PORT||5000
 app.use(router, (req, res, next) => {
     next()
 })
