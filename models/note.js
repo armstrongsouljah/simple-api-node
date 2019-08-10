@@ -17,9 +17,9 @@ class Note {
              throw error
          })
     }
-    static  async listNotes () {
+    static listNotes () {
         let db = getDB()
-        return await db.collection('items').find().toArray().then(
+        return db.collection('items').find().toArray().then(
             result => {
                 return result
             }
