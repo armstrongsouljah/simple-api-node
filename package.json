@@ -6,7 +6,8 @@
   "author": "Muhwezi Armstrong <armstrongsouljah@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
