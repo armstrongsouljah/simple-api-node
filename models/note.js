@@ -17,6 +17,16 @@ class Note {
              throw error
          })
     }
+    static  async listNotes () {
+        let db = getDB()
+        return await db.collection('items').find().toArray().then(
+            result => {
+                return result
+            }
+        ).catch(error => {
+            throw error
+        })
+    }
 }
 
 module.exports = Note

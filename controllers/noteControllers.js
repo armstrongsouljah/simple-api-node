@@ -7,3 +7,13 @@ exports.createNote = (req, res, next) => {
        'message': 'note created'
    })
 }
+
+exports.fetchAllNotes = (req, res, next) => {
+    Note.listNotes()
+     .then(items => {
+         res.status(200).json({
+             'notes': items
+         })
+     })
+    
+}
