@@ -34,6 +34,14 @@ class Note {
             callback(result)
         })
     }
+    static fetchNote(query) {
+        let db = getDB()
+        return db.collection('items').findOne(query).then(
+            result => result
+        ).catch(err => {
+            throw err
+        })
+    }
 }
 
 module.exports = Note
