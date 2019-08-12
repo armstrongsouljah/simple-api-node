@@ -17,3 +17,21 @@ exports.fetchAllNotes = (req, res, next) => {
      })
     
 }
+
+exports.removeNote = (req, res, next) => {
+    Note.deleteNote({
+        'title': req.body.title
+    }, (item) => {
+       if(item.deletedCount == 0) {
+           res.status(404).json({
+               success: false,
+               message: 'Item not found'
+           })
+       }
+       res.status(204).json({
+        'success': true,
+        'message': "Item successfully deleted"
+    })
+    })
+    
+}
