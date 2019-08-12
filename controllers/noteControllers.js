@@ -32,6 +32,15 @@ exports.removeNote = (req, res, next) => {
         'success': true,
         'message': "Item successfully deleted"
     })
-    })
-    
+    })   
+}
+
+exports.retrieveNote = (req, res, next) => {
+    Note.fetchNote({title: req.body.title})
+       .then(item => {
+           res.status(200).json({
+               success: true,
+               note: item
+           })
+       })
 }
