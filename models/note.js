@@ -27,6 +27,13 @@ class Note {
             throw error
         })
     }
+    static deleteNote(query, callback) {
+        let db = getDB()
+        return db.collection('items').deleteOne(query, (err, result) => {
+            if(err) throw err
+            callback(result)
+        })
+    }
 }
 
 module.exports = Note
